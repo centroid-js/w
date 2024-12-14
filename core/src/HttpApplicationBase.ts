@@ -2,7 +2,6 @@
 import { ConfigurationBase, ApplicationBase } from '@themost/common';
 import { IncomingMessage, ServerResponse } from 'http';
 
-// tslint:disable-next-line:ban-types
 export declare type ApplicationServiceConstructor<T> = Function & { prototype: T };
 
 export declare interface HttpApplicationBase extends ApplicationBase {

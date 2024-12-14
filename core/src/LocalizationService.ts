@@ -7,6 +7,6 @@ export abstract class LocalizationService extends ApplicationService {
     protected constructor(app: ApplicationBase) {
         super(app);
     }
-    public abstract get(locale: string, key: string, replace?: any): string;
-    public abstract set(locale: string, data: any, shouldMerge?: boolean): this;
+    public abstract get(locale: string, key: string, replace?: unknown): string;
+    public abstract set(locale: string, data: unknown, shouldMerge?: boolean): this;
 }

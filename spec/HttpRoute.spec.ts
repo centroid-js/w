@@ -1,5 +1,5 @@
 
-import {HttpRoute} from '@centroidjs/web/core';
+import {HttpRoute} from '@centroidjs/web/router';
 
 describe('HttpRoute', () => {
 

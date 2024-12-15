@@ -1,5 +1,5 @@
 import { HttpResult } from './HttpResult';
-import { HttpContextBase } from '@centroidjs/web/core';
+import { HttpContextBase } from '@centroidjs/web';
 import { XSerializer } from '@themost/xml';
 
 export class HttpXmlResult extends HttpResult {

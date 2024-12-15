@@ -1,5 +1,5 @@
 import { HttpResult } from './HttpResult';
-import { HttpContextBase } from '@centroidjs/web/core';
+import { HttpContextBase } from '@centroidjs/web';
 
 export class HttpJsonResult extends HttpResult {
     execute(context: HttpContextBase): Promise<Record<string, unknown>> {

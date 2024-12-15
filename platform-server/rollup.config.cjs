@@ -25,7 +25,10 @@ module.exports = [{
             sourcemap: true
         },
     ],
-    external: Object.keys(pkg.dependencies),
+    external: Object.keys(pkg.dependencies).concat(
+            '@centroidjs/web/router',
+            '@centroidjs/web'
+        ),
     plugins: [
         typescript({ tsconfig: path.resolve(__dirname, './tsconfig.lib.json') })
     ]

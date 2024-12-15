@@ -2,7 +2,7 @@
 import {controllerRouter, HttpApplication, HttpContext} from '@centroidjs/web/platform-server';
 import * as request from 'supertest';
 import * as express from 'express';
-import { RouterService } from '@centroidjs/web/core';
+import { RouterService } from '@centroidjs/web/router';
 import { HelloController } from './examples/app1/controllers/HelloController';
 
 describe('HttpApplication', () => {

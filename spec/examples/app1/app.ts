@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { HttpApplication, controllerRouter } from '@centroidjs/web/platform-server';
 import { HelloController } from './controllers/HelloController';
-import { RouterService } from '@centroidjs/web/core';
+import { RouterService } from '@centroidjs/web/router';
 
 const container = express();
 const app = new HttpApplication();

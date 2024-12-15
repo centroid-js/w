@@ -91,7 +91,8 @@ module.exports = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^@centroidjs/web/core$': '<rootDir>/core/src/index',
+    '^@centroidjs/web$': '<rootDir>/src/index',
+    '^@centroidjs/web/router$': '<rootDir>/router/src/index',
     '^@centroidjs/web/platform-server$': '<rootDir>/platform-server/src/index',
   },
 
@@ -141,7 +142,7 @@ module.exports = {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
-    '<rootDir>/jest.setup.js'
+    '<rootDir>/jest.setup.cjs'
   ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.

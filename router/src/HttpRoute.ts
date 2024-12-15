@@ -1,7 +1,6 @@
-// MOST Web Framework Codename ZeroGravity, copyright 2017-2020 THEMOST LP all rights reserved
+// MOST Web Framework Codename ZeroGravity, copyright 2017-2025 THEMOST LP all rights reserved
 
-export const HTTP_ROUTE_PATTERNS:
-    [string, () => string][] = [
+const HTTP_ROUTE_PATTERNS: [string, () => string][] = [
     ['int', () => {
         return '^[1-9]([0-9]*)$';
     }],
@@ -52,14 +51,14 @@ declare interface HttpRouteParameter {
  * @property {unknown} [controller] - Optional controller associated with the route.
  * @property {string} [action] - Optional action to be performed for the route.
  */
-export declare interface HttpRouteConfig {
+declare interface HttpRouteConfig {
     path: string;
     index?: number;
     controller?: unknown;
     action?: string;
 }
 
-export const HTTP_ROUTE_PARSERS: [string, (value: unknown) => unknown][] = [
+const HTTP_ROUTE_PARSERS: [string, (value: unknown) => unknown][] = [
     ['int', (value: unknown) => {
         return parseInt(value as string, 10);
     }],
@@ -84,7 +83,7 @@ export const HTTP_ROUTE_PARSERS: [string, (value: unknown) => unknown][] = [
 /**
  * Represents an HTTP route configuration and matching logic.
  */
-export class HttpRoute {
+class HttpRoute {
 
     /**
      * Parameters extracted from the matched route.
@@ -225,4 +224,12 @@ export class HttpRoute {
         return true;
     }
 
+}
+
+export {
+    HTTP_ROUTE_PATTERNS,
+    HTTP_ROUTE_PARSERS,
+    HttpRoute,
+    HttpRouteConfig,
+    HttpRouteParameter
 }

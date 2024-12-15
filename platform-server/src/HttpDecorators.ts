@@ -3,7 +3,7 @@ import {LangUtils, HttpBadRequestError, HttpUnauthorizedError} from '@themost/co
 import {HttpConsumer} from './HttpConsumer';
 import {DataTypeValidator, MinLengthValidator, MaxLengthValidator,
 MinValueValidator, MaxValueValidator, RequiredValidator, PatternValidator } from '@themost/data';
-import {HttpContextBase} from '@centroidjs/web/core';
+import {HttpContextBase} from '@centroidjs/web';
 import {HttpRouteConfig} from '@centroidjs/web/router';
 
 class DecoratorError extends Error {

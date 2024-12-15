@@ -4,6 +4,7 @@
     "declaration": true,
     "target": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "noImplicitAny": true,
@@ -15,9 +16,18 @@
       "dom"
     ],
     "paths": {
-      "@centroidjs/web/router": [ "router/src/index" ],
-      "@centroidjs/web/core": [ "core/src/index" ],
-      "@centroidjs/web/platform-server": [ "platform-server/src/index" ]
+      "@centroidjs/core": [
+          "../core/src/index"
+      ],
+      "@centroidjs/web/router": [
+        "router/src/index"
+      ],
+      "@centroidjs/web/platform-server": [
+        "platform-server/src/index"
+      ],
+      "@centroidjs/web": [
+        "src/index"
+      ],
     }
   },
   "exclude": [

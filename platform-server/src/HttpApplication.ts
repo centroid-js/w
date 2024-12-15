@@ -1,5 +1,5 @@
 // MOST Web Framework Codename ZeroGravity, copyright 2017-2025 THEMOST LP all rights reserved
-import {HttpApplicationBase} from '@centroidjs/web/core';
+import {HttpApplicationBase} from '@centroidjs/web';
 import { RouterService } from '@centroidjs/web/router';
 import { Application, ApplicationConfiguration, ApplicationConfigurationBase } from '@centroidjs/core';
 import { Request, Response } from 'express-serve-static-core';
@@ -12,7 +12,7 @@ class HttpApplication extends Application implements HttpApplicationBase {
     
     protected controllers: Map<string, new() => HttpController> = new Map<string, new() => HttpController>();
 
-    constructor(configuration: ApplicationConfiguration) {
+    constructor(configuration?: ApplicationConfiguration) {
         super(configuration);
         // use router service
         this.useService(RouterService);

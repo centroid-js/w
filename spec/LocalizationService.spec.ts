@@ -11,14 +11,16 @@ describe('HttpApplication', () => {
 
     it('should LocalizationService.set()', () => {
         const app = new HttpApplication();
-        app.configuration.setSourceAt('settings/i18n', {
-            staticCatalog: {
-                en: {
-                },
-                fr: {
+        app.configuration.instant.settings = {
+            i18n: {
+                staticCatalog: {
+                    en: {
+                    },
+                    fr: {
+                    }
                 }
             }
-        });
+        }
         const service = new I18nLocalizationService(app);
         service.set('en', {
             'HelloMessage': 'Hello World'

@@ -3,8 +3,8 @@ import { LocalizationService } from '@centroidjs/web';
 import { ApplicationBase } from '@centroidjs/core';
 import {I18n, ConfigurationOptions} from 'i18n';
 import * as path from 'path';
-import assign from 'lodash-es/assign';
-import merge from 'lodash-es/merge';
+import merge from 'lodash/merge';
+import assign from 'lodash/assign';
 
 export class I18nLocalizationService extends LocalizationService {
     public locales: string[] = [ 'en' ];

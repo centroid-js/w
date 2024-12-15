@@ -4,7 +4,7 @@ import { HttpController } from './HttpController';
 import { HttpResult } from './HttpResult';
 import { HttpNextResult } from './HttpNextResult';
 import { HttpControllerMethodAnnotation } from './HttpDecorators';
-import capitalize from 'lodash-es/capitalize';
+import capitalize from 'lodash/capitalize';
 import { LangUtils } from '@themost/common';
 
 declare type HttpControllerMethod = (...arg: unknown[]) => unknown;
@@ -18,10 +18,11 @@ export function controllerRouter(): Router {
             const ControllerCtor = route.routeConfig.controller as new() => HttpController;
             const controller: HttpController = new ControllerCtor();
             controller.context = req.context;
-            const action = route.params.action || route.routeConfig.action;
+            const action = (route.params.action || route.routeConfig.action) as string;
             let controllerMethod: HttpControllerMethod;
-            if (Object.prototype.hasOwnProperty.call(controller, action as string)) {
-                controllerMethod = controller[action as string] as HttpControllerMethod;
+            const descriptor = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(controller), action);
+            if (descriptor && typeof descriptor.value === 'function') {
+                controllerMethod = descriptor.value as HttpControllerMethod;
             }
             if (typeof controllerMethod === 'function') {
                 // validate httpAction

@@ -13,7 +13,7 @@ class HttpApplication extends Application implements HttpApplicationBase {
     protected controllers: Map<string, new() => HttpController> = new Map<string, new() => HttpController>();
 
     constructor(configuration?: ApplicationConfiguration) {
-        super(configuration);
+        super(configuration || new ApplicationConfiguration({}));
         // use router service
         this.useService(RouterService);
     }

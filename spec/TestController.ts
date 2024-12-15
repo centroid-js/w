@@ -2,9 +2,6 @@
 import {HttpController, httpController, httpGet} from '@centroidjs/web/platform-server';
 @httpController('test')
 class TestController extends HttpController {
-    constructor() {
-        super();
-    }
     @httpGet()
     hello() {
         return 'Hello World';

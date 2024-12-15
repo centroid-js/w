@@ -1,10 +1,7 @@
-import { HttpController, httpController, httpGet, httpAction, httpParam } from '@centroid.js/web/platform-server';
+import { HttpController, httpController, httpGet } from '@centroidjs/web/platform-server';
 
 @httpController('hello')
 export class HelloController extends HttpController {
-    constructor() {
-        super();
-    }
     
     @httpGet({
         name: 'index',
@@ -15,6 +12,7 @@ export class HelloController extends HttpController {
             }
         ]
     })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     index(message: string) {
         return this.content('Hello World');
     }

@@ -1,8 +1,8 @@
 // MOST Web Framework Codename ZeroGravity, copyright 2017-2020 THEMOST LP all rights reserved
-import { ApplicationService } from '@themost/common';
+import { ApplicationService } from '@centroidjs/core';
 import {HttpRoute, HttpRouteConfig} from './HttpRoute';
 
-export class RouterService extends ApplicationService {
+class RouterService extends ApplicationService {
     public readonly routes: HttpRouteConfig[] = [];
     
     /**
@@ -23,6 +23,13 @@ export class RouterService extends ApplicationService {
         return this;
     }
 
+    /**
+     * Parses the given URL and attempts to match it against the available routes.
+     *
+     * @param url - The URL to be parsed and matched against the routes.
+     * @param startIndex - The index from which to start the route matching process. Defaults to 0.
+     * @returns An instance of `HttpRoute` if a matching route is found, otherwise `undefined`.
+     */
     parseUrl(url: string, startIndex = 0): HttpRoute {
         const route = new HttpRoute();
         for(let i = startIndex; i < this.routes.length; i++) {
@@ -38,3 +45,7 @@ export class RouterService extends ApplicationService {
     }
 
 }
+
+export {
+    RouterService
+};

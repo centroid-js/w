@@ -1,5 +1,5 @@
 // MOST Web Framework Codename ZeroGravity, copyright 2017-2020 THEMOST LP all rights reserved
-import { ApplicationService, ApplicationBase } from '@themost/common';
+import { ApplicationService, ApplicationBase } from '@centroidjs/core';
 
 export abstract class LocalizationService extends ApplicationService {
     public abstract locales: string[];

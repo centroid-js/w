@@ -26,7 +26,7 @@
   "homepage": "https://github.com/centroid-js/web#readme",
   "dependencies": {
     "@themost/common": "^2.7.5",
-    "@themost/data": "^2.9.8",
+    "@themost/data": "^2.16.1",
     "@themost/query": "^2.9.12",
     "@themost/xml": "^2.5.2",
     "esprima": "^4.0.1",
@@ -43,7 +43,7 @@
     "@types/express": "^4.17.9",
     "@types/i18n": "^0.12.0",
     "@types/jest": "^29.0.0",
-    "@types/lodash": "^4.14.164",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^16.11.6",
     "@types/pluralize": "^0.0.29",
     "@types/supertest": "^2.0.10",

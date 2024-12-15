@@ -1,6 +1,7 @@
 const rollup = require('rollup');
 const typescript = require('@rollup/plugin-typescript');
 const pkg = require('./package.json');
+const routerRollupConfig = require('./router/rollup.config.cjs');
 module.exports = [{
     input: './core/src/index.ts',
     output: [
@@ -23,35 +24,34 @@ module.exports = [{
             sourcemap: true
         },
     ],
-    external: Object.keys(pkg.dependencies),
+    external: Object.keys(pkg.dependencies).concat('@centroidjs/core'),
     plugins: [
         typescript({ tsconfig: './core/tsconfig.lib.json' })
     ]
 }, {
-    input: './platform-server/src/index.ts',
+    input: './router/src/index.ts',
     output: [
         {
-            name: '@centroidjs/web/platform-server',
-            file: `platform-server/dist/index.cjs.js`,
+            name: '@centroidjs/web/router',
+            file: `router/dist/index.js`,
             format: 'cjs',
             sourcemap: true
         },
         {
-            name: '@centroidjs/web/platform-server',
-            file: `platform-server/dist/index.esm.js`,
+            name: '@centroidjs/web/router',
+            file: `router/dist/index.esm.js`,
             format: 'esm',
             sourcemap: true
         },
         {
-            name: '@centroidjs/web/platform-server',
-            file: `platform-server/dist/index.umd.js`,
+            name: '@centroidjs/web/router',
+            file: `router/dist/index.umd.js`,
             format: 'umd',
             sourcemap: true
         },
     ],
-    external: Object.keys(pkg.dependencies)
-        .concat('@centroidjs/web/core'),
+    external: Object.keys(pkg.dependencies).concat('@centroidjs/core'),
     plugins: [
-        typescript({ tsconfig: './platform-server/tsconfig.lib.json' })
+        typescript({ tsconfig: './router/tsconfig.lib.json' })
     ]
-}];
+}, ...routerRollupConfig];

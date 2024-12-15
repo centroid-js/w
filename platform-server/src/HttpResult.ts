@@ -2,10 +2,10 @@
 import {HttpContextBase} from '@centroidjs/web/core';
 export abstract class HttpResult {
 
-    public contentType: string = 'text/html';
-    public contentEncoding: string = 'utf8';
+    public contentType = 'text/html';
+    public contentEncoding = 'utf8';
     public status: number;
 
-    abstract execute(context: HttpContextBase): Promise<any>;
+    abstract execute(context: HttpContextBase): Promise<unknown>;
 
 }

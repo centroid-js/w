@@ -2,7 +2,7 @@ import { HttpResult } from './HttpResult';
 import { HttpContextBase } from '@centroidjs/web/core';
 
 export class HttpJsonResult extends HttpResult {
-    execute(context: HttpContextBase): Promise<any> {
+    execute(context: HttpContextBase): Promise<Record<string, unknown>> {
         if (this.data == null) {
             context.response.writeHead(this.status || 204);
             return;
@@ -12,7 +12,7 @@ export class HttpJsonResult extends HttpResult {
         // send response
         context.response.write(JSON.stringify(this.data), this.contentEncoding as BufferEncoding);
     }
-    constructor(public data: any) {
+    constructor(public data: Record<string, unknown>) {
         super();
         this.contentType = 'utf8';
         this.contentEncoding = 'application/json';

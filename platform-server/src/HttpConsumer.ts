@@ -2,7 +2,7 @@
 import {HttpContextBase} from '@centroidjs/web/core';
 
 export class HttpConsumer {
-    constructor(public callable: (this: HttpContextBase,...args: unknown[]) => Promise<unknown>) {
+    constructor(public callable: (...args: unknown[]) => Promise<unknown>) {
         //
     }
 

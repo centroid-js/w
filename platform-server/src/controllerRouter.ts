@@ -1,23 +1,28 @@
-import { HttpApplicationBase, RouterService, HttpRoute } from '@centroidjs/web/core';
+import { RouterService, HttpRoute } from '@centroidjs/web/router';
 import {Router} from 'express';
 import { HttpController } from './HttpController';
 import { HttpResult } from './HttpResult';
 import { HttpNextResult } from './HttpNextResult';
 import { HttpControllerMethodAnnotation } from './HttpDecorators';
-import {capitalize} from 'lodash';
+import capitalize from 'lodash-es/capitalize';
 import { LangUtils } from '@themost/common';
 
-export function controllerRouter(app: HttpApplicationBase): Router {
+declare type HttpControllerMethod = (...arg: unknown[]) => unknown;
+
+export function controllerRouter(): Router {
     const router = Router();
     router.use((req, res, next) => {
-        const appRouter: RouterService = req.context.application.getService(RouterService);
-        const route: HttpRoute = appRouter.parseUrl(req.url);
+        const routerService: RouterService = req.context.application.getService(RouterService);
+        const route: HttpRoute = routerService.parseUrl(req.url);
         if (route) {
             const ControllerCtor = route.routeConfig.controller as new() => HttpController;
-            const controller = new ControllerCtor();
+            const controller: HttpController = new ControllerCtor();
             controller.context = req.context;
             const action = route.params.action || route.routeConfig.action;
-            const controllerMethod: (...arg: any) => any = controller[action];
+            let controllerMethod: HttpControllerMethod;
+            if (Object.prototype.hasOwnProperty.call(controller, action as string)) {
+                controllerMethod = controller[action as string] as HttpControllerMethod;
+            }
             if (typeof controllerMethod === 'function') {
                 // validate httpAction
                 const annotation = controllerMethod as HttpControllerMethodAnnotation;
@@ -25,7 +30,7 @@ export function controllerRouter(app: HttpApplicationBase): Router {
                 const method = `http${capitalize(req.method)}`;
                 // if controller method has been annotated
                 if (Object.prototype.hasOwnProperty.call(annotation, method)) {
-                    const args: any[] = [];
+                    const args: unknown[] = [];
                     // parse method arguments
                     const methodParams = LangUtils.getFunctionParams(controllerMethod);
                     methodParams.forEach((methodParam: string) => {
@@ -37,7 +42,7 @@ export function controllerRouter(app: HttpApplicationBase): Router {
                     });
                     const result = controllerMethod.apply(controller, args);
                     if (result instanceof HttpNextResult) {
-                        return next;
+                        return next();
                     }
                     if (result instanceof HttpResult) {
                         return result.execute(controller.context).then(() => {

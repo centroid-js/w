@@ -15,7 +15,11 @@ const compat = new FlatCompat({
 });
 
 export default [{
-    ignores: ["core/dist", "platform-server/dist"],
+    ignores: [
+        "rollup.config.js",
+        "**/*.cjs",
+        "*/dist"
+    ],
 }, ...compat.extends(
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/strict",

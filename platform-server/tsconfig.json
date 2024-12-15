@@ -14,8 +14,14 @@
         "module": "ESNext",
         "target": "es5",
         "paths": {
+            "@centroidjs/core": [
+                "../../core/src/index"
+            ],
             "@centroidjs/web/core": [
                 "../core/src/index"
+            ],
+            "@centroidjs/web/router": [
+                "../router/src/index"
             ]
         }
     },

@@ -1,0 +1,15 @@
+{
+    "config": {
+        "name": "@centroidjs/web/router"
+    },
+    "private": true,
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "peerDependencies": {
+        "@centroidjs/core": "latest"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

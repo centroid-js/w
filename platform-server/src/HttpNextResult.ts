@@ -3,7 +3,8 @@ import { HttpResult } from './HttpResult';
 import { HttpContextBase } from '@centroidjs/web/core';
 
 export class HttpNextResult extends HttpResult {
-    execute(_context: HttpContextBase): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    execute(context: HttpContextBase): Promise<void> {
         // do nothing
         return;
     }

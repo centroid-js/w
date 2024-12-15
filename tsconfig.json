@@ -15,6 +15,7 @@
       "dom"
     ],
     "paths": {
+      "@centroidjs/web/router": [ "router/src/index" ],
       "@centroidjs/web/core": [ "core/src/index" ],
       "@centroidjs/web/platform-server": [ "platform-server/src/index" ]
     }
